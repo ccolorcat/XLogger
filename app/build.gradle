@@ -34,10 +34,11 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':library')
     implementation rootProject.ext.appcompat
     implementation rootProject.ext.material
     testImplementation rootProject.ext.junit
     androidTestImplementation rootProject.ext.androidJunit
     androidTestImplementation rootProject.ext.testEspresso
+
+    implementation 'com.github.ccolorcat:XLogger:v1.0.0'
 }

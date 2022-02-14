@@ -5,9 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Hello World!" />
+        android:text="Test XLogger"
+        android:textAllCaps="false"
+        tools:ignore="HardcodedText" />
 </FrameLayout>
