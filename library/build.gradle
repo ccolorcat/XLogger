@@ -53,7 +53,7 @@ project.afterEvaluate {
                 artifact androidSourcesJar
                 groupId = "cc.colorcat.xlogger"
                 artifactId = "XLogger"
-                version = '1.0.0'
+                version = rootProject.ext.versionName
             }
         }
     }
