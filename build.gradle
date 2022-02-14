@@ -1,0 +1,31 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '7.1.1' apply false
+    id 'com.android.library' version '7.1.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+project.ext {
+    def sdkVersion = 31
+
+    // android
+    compileSdk = sdkVersion
+
+    // android.defaultConfig
+    minSdk = 16
+    targetSdk = sdkVersion
+    versionCode = 1
+    versionName = "1.0.0"
+
+    // dependencies
+    appcompat = "androidx.appcompat:appcompat:1.4.1"
+    coreKtx = "androidx.core:core-ktx:1.7.0"
+    material = "com.google.android.material:material:1.5.0"
+    androidJunit = "androidx.test.ext:junit:1.1.3"
+    testEspresso = "androidx.test.espresso:espresso-core:3.4.0"
+    junit = "junit:junit:4.13.2"
+}
