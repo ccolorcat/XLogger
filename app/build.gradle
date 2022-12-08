@@ -40,7 +40,6 @@ dependencies {
     testImplementation rootProject.ext.junit
     androidTestImplementation rootProject.ext.androidJunit
     androidTestImplementation rootProject.ext.testEspresso
-    implementation(project(":library"))
 
-//    implementation 'com.github.ccolorcat:XLogger:v1.0.0'
+    implementation 'com.github.ccolorcat:XLogger:v1.0.1'
 }
