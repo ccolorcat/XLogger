@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace 'cc.colorcat.xlogger'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {

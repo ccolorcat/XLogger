@@ -18,6 +18,8 @@ package cc.colorcat.xlogger
 
 import android.annotation.SuppressLint
 import androidx.collection.LruCache
+import java.io.PrintWriter
+import java.io.StringWriter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -77,14 +79,30 @@ class XLogger private constructor(private val tag: String) {
         print(ERROR, msg)
     }
 
-    fun e(builder: () -> CharSequence) {
-        print(ERROR, builder)
+    fun e(throwable: Throwable) {
+        return e(throwable) { "" }
     }
 
-    fun e(throwable: Throwable) {
-        if (ERROR >= threshold) {
-            throwable.printStackTrace()
+    fun e(throwable: Throwable, builder: () -> CharSequence) {
+        return e {
+            val sw = StringWriter()
+            val pw = PrintWriter(sw)
+            kotlin.runCatching {
+                pw.use {
+                    val msg = builder.invoke()
+                    if (msg.isNotEmpty()) {
+                        it.println(msg)
+                    }
+                    throwable.printStackTrace(pw)
+                    it.flush()
+                }
+            }
+            sw.toString()
         }
+    }
+
+    fun e(builder: () -> CharSequence) {
+        print(ERROR, builder)
     }
 
     fun print(priority: Int, builder: () -> CharSequence) {
